@@ -1,50 +1,59 @@
 import * as React from "react";
-import { DataGrid } from "@mui/x-data-grid";
-import { Box, Button, Typography, TextField } from "@mui/material";
-import PhoneInput from 'react-phone-input-2';
+import { Box, Button, Typography, TextField, Icon } from "@mui/material";
+import { FormControl } from "@mui/material";
 
 const Form = (props) => {
+
   return (
     <Box
-    display="flex"
-    justifyContent="center"
-    alignItems="center"
-    flexDirection="column"
-    gap="2vh"
+      display="flex"
+      justifyContent="center"
+      alignItems="center"
+      flexDirection="column"
+      gap="2vh"
     >
-      <TextField
-        required
-        id="firstname"
-        label="First name"
-      />
+      <FormControl>
         <TextField
-        required
-        id="lastname"
-        label="Last name"
-
-      />
+          required={true}
+          id="firstname"
+          label="First name"
+          defaultValue={props.fname}
+        />
         <TextField
-        required
-        id="phone"
-        label="Phone number"
-
-      />
-              <TextField
-        required
-        id="email"
-        label="Email"
-
-      />
-              <TextField
-        required
-        id="address"
-        label="Address"
-
-      />
-
-      <Button>
-        Save
-      </Button>
+          required={true}
+          id="lastname"
+          label="Last name"
+          defaultValue={props.lname}
+        />
+        <TextField
+          required={true}
+          id="phone"
+          label="Phone number"
+          defaultValue={props.phonenum}
+        />
+        <TextField
+          required={true}
+          id="email"
+          label="Email"
+          defaultValue={props.email}
+        />
+        <TextField
+          required={true}
+          id="address"
+          label="Address"
+          defaultValue={props.address}
+        />
+      </FormControl>
+      <Box
+        display="flex"
+        justifyContent="center"
+        alignItems="center"
+        flexDirection="row"
+        gap="2vh"
+      >
+      </Box>
+      <Button onClick = {props.submitHandler} variant="contained" color="primary">Submit</Button>
+      <Button variant="contained" color="primary">Cancel</Button>
     </Box>
   );
 };

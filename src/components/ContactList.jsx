@@ -24,9 +24,34 @@ const columns = [
     type: "address",
     width: 130,
   },
+  {
+    field: "edit",
+    headerName: "",
+    renderCell:(cellValues)=>{
+      console.log(cellValues)
+      return(
+        <Button>Edit</Button>
+      )
+
+    }
+  },
+  {
+    field: "delete",
+    headerName: "",
+    renderCell:(cellValues)=>{
+      console.log(cellValues)
+      return(
+        <Button>Delete</Button>
+      )
+
+    }
+  }
 ];
 
 const ContactList = (props) => {
+
+  console.log(props);
+
   return (
     <DataGrid
       rows={props.rows}
@@ -36,6 +61,7 @@ const ContactList = (props) => {
       //hide the ID
       checkboxSelection={false}
       columnVisibilityModel={{ id: false }}
+      disableRowSelectionOnClick = {true}
     />
   );
 };

@@ -8,18 +8,19 @@ import DeleteContact from "./DeleteContact";
 import { Box, Button } from "@mui/material";
 
 const DUMMY_DATA = [
-  { id: 1, lastName: "Snow", firstName: "Jon", age: 35 },
-  { id: 2, lastName: "Lannister", firstName: "Cersei", age: 42 },
-  { id: 3, lastName: "Lannister", firstName: "Jaime", age: 45 },
-  { id: 4, lastName: "Stark", firstName: "Arya", age: 16 },
-  { id: 5, lastName: "Targaryen", firstName: "Daenerys", age: 22 },
-  { id: 6, lastName: "Melisandre", firstName: "Michael", age: 56 },
-  { id: 7, lastName: "Clifford", firstName: "Ferrara", age: 44 },
-  { id: 8, lastName: "Frances", firstName: "Rossini", age: 36 },
-  { id: 9, lastName: "Roxie", firstName: "Harvey", age: 65 },
-];
+  { id: 1,    fName: "Jon", age: 35,     lName: "Snow",          address: "392 Locust Street" },
+  { id: 2,  fName: "Cersei", age: 42   ,   lName: "Lannister",                   },
+  { id: 3, fName: "Jaime", age: 45     ,   lName: "Lannister",                  },
+  { id: 4,  fName: "Arya", age: 16     ,   lName: "Stark",                           },
+  { id: 5,  fName: "Daenerys", age: 22 ,   lName: "Targaryen",                   },
+  { id: 6, fName: "Michael", age: 56   ,   lName: "Melisandre",                },
+  { id: 7, fName: "Ferrara", age: 44   ,   lName: "Clifford",                    },
+  { id: 8,  fName: "Rossini", age: 36  ,     lName: "Frances",                      },
+  { id: 9,  fName: "Harvey", age: 65   ,     lName: "Roxie",                         },
+];  
 
 function MainPage() {
+
   const [contacts, setContacts] = React.useState(DUMMY_DATA);
 
   const [mode, setMode] = React.useState("n");
@@ -36,29 +37,33 @@ function MainPage() {
     setMode("d");
   };
 
+  const addHandler = (contact) => {
+    setContacts((prevContacts) => {
+      return [contact, ...prevContacts];
+    });
+  };
+
   return (
+    <Box display="flex">
+      {mode == "n" && (
+        <Box
+          display="flex"
+          flexDirection="column"
+          justifyContent="center"
+          alignItems="center"
+          gap="10%"
+          width="30%"
+        >
+          <Button variant="outlined" size="large" onClick={handleAdd}>
+            Add new contact
+          </Button>
+        </Box>
+      )}
 
-      <Box display="flex">
-        {mode == "n" && (
-          <Box
-            display="flex"
-            flexDirection="column"
-            justifyContent="center"
-            alignItems="center"
-            gap="10%"
-            width="30%"
-          >
-            <Button variant="outlined" size="large" onClick={handleAdd}>
-              Add new contact
-            </Button>
-          </Box>
-        )}
+      {mode === "a" && <AddContact onAdd={addHandler}></AddContact>}
 
-        {mode === "a" && <AddContact></AddContact>}
-
-        <ContactList rows={contacts}></ContactList>
-      </Box>
-
+      <ContactList rows={contacts}></ContactList>
+    </Box>
   );
 }
 

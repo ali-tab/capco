@@ -1,29 +1,43 @@
-import * as React from "react";
+import React, { useState } from "react";
 import { Box, Button, Typography, TextField } from "@mui/material";
 import Form from "./Form";
-import ContactList from "./ContactList";
 
 const AddContact = (props) => {
 
-  const submit = (
 
-    console.log("hello")
+  const enterDataHandler = (enteredData) => {
 
-  )
+    const contactData = {
+    id: 10,...enteredData
+    };
+    props.onAdd(contactData)
+
+    console.log(contactData)
+
+  }
+
+  const cancelHandler = (props) => {
+
+
+  }
 
   return (
     <Box
-      display="flex"
-      justifyContent="center"
-      alignItems="center"
-      flexDirection="column"
-      gap="2vh"
-      width="30%"
+    display="flex"
+    justifyContent="center"
+    alignItems="center"
+    flexDirection="column"
+    width="30%"
     >
+    <Typography>Add a new contact</Typography>
+
       <Form
-      submitHandler = {submit}
+      onEnterData = {enterDataHandler}
+      onCancel = {cancelHandler}
       ></Form>
+
     </Box>
+
   );
 };
 

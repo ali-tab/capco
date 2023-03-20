@@ -3,13 +3,13 @@ import { DataGrid } from "@mui/x-data-grid";
 import { Box, Button, Typography } from "@mui/material";
 
 const columns = [
-  { field: "id", headerName: "ID", width: 70 },
-  { field: "firstName", headerName: "First name", width: 130 },
-  { field: "lastName", headerName: "Last name", width: 130 },
+  { field: "id", headerName: "ID", width: 70, type: "fName" },
+  { field: "fName", headerName: "First name", width: 130, },
+  { field: "lName", headerName: "Last name", width: 130 },
   {
     field: "phone",
     headerName: "Phone Number",
-    type: "phone number",
+    type: "phonenumber",
     width: 130,
   },
   {
@@ -27,31 +27,20 @@ const columns = [
   {
     field: "edit",
     headerName: "",
-    renderCell:(cellValues)=>{
-      console.log(cellValues)
-      return(
-        <Button>Edit</Button>
-      )
-
-    }
+    renderCell: (cellValues) => {
+      return <Button>Edit</Button>;
+    },
   },
   {
     field: "delete",
     headerName: "",
-    renderCell:(cellValues)=>{
-      console.log(cellValues)
-      return(
-        <Button>Delete</Button>
-      )
-
-    }
-  }
+    renderCell: (cellValues) => {
+      return <Button>Delete</Button>;
+    },
+  },
 ];
 
 const ContactList = (props) => {
-
-  console.log(props);
-
   return (
     <DataGrid
       rows={props.rows}
@@ -61,7 +50,7 @@ const ContactList = (props) => {
       //hide the ID
       checkboxSelection={false}
       columnVisibilityModel={{ id: false }}
-      disableRowSelectionOnClick = {true}
+      disableRowSelectionOnClick={true}
     />
   );
 };

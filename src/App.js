@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import ContactList from "./components/ContactList";
+import Form from "./components/Form";
+
 import "./App.css";
 
 //material UI imports
@@ -20,10 +22,31 @@ const DUMMY_DATA = [
 function App() {
   const [contacts] = React.useState(DUMMY_DATA);
 
+  const [selected, setSelected] = React.useState(null);
+
+  const [mode, setMode] = React.useState("n");
+
+  const handleRowClick = (params) => {
+    setSelected(params);
+  };
+
+  const handleAdd = (params) => {
+    setMode("a");
+  };
+
+  const handleEdit = (params) => {
+    setMode("e");
+  };
+
+  const handleDelete = (params) => {
+    setMode("d");
+  };
+
   return (
     <div className="App">
       <Box display="flex">
-        <Box
+        
+        {mode == "n" && <Box
           display="flex"
           flexDirection="column"
           justifyContent="center"
@@ -31,19 +54,24 @@ function App() {
           gap="10%"
           width="30%"
         >
-          <Button variant="outlined" size="large">
+          <Button variant="outlined" size="large" onClick={handleAdd}>
             Add
           </Button>
-          <Button variant="outlined" size="large">
+          <Button variant="outlined" size="large" onClick={handleEdit}>
             Edit
           </Button>
-          <Button variant="outlined" size="large">
+          <Button variant="outlined" size="large" onClick={handleDelete}>
             Delete
           </Button>
-        </Box>
+        </Box>}
 
-        <ContactList rows={contacts}></ContactList>
+        
+      {mode != "n" && <Form/>}
+
+        <ContactList rows={contacts} onRowClick={handleRowClick}></ContactList>
       </Box>
+
+      
     </div>
   );
 }

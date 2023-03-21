@@ -25,6 +25,8 @@ function MainPage() {
 
   const [mode, setMode] = React.useState("n");
 
+  const [selectedContact, setSelected] = React.useState(-1);
+
   const handleAdd = (params) => {
     setMode("a");
   };
@@ -33,14 +35,33 @@ function MainPage() {
     setMode("e");
   };
 
-  const handleDelete = (params) => {
-    setMode("d");
-  };
-
   const addHandler = (contact) => {
     setContacts((prevContacts) => {
       return [contact, ...prevContacts];
     });
+  };
+
+  const deletePressed = (e, id) => {
+    setMode("d");
+    e.stopPropagation();
+      let newList = [...contacts]
+      let found = newList.findIndex(o => o.id == id);
+      setSelected(found);
+  };
+
+  const deleteHandler = () => {
+    
+    setContacts((prevContacts) => {
+      
+      let newList = [...prevContacts]
+
+      newList.splice(selectedContact, 1)
+
+      setMode("n");
+
+      return newList
+    });
+
   };
 
   return (
@@ -61,8 +82,10 @@ function MainPage() {
       )}
 
       {mode === "a" && <AddContact onAdd={addHandler}></AddContact>}
+      {mode === "d" && <DeleteContact onDelete={deleteHandler}></DeleteContact>}
 
-      <ContactList rows={contacts}></ContactList>
+      <ContactList rows={contacts} onDelete={deletePressed}></ContactList>
+
     </Box>
   );
 }

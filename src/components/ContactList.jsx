@@ -2,6 +2,9 @@ import * as React from "react";
 import { DataGrid } from "@mui/x-data-grid";
 import { Box, Button, Typography } from "@mui/material";
 
+
+const ContactList = (props) => {
+
 const columns = [
   { field: "id", headerName: "ID", width: 70, type: "fName" },
   { field: "fName", headerName: "First name", width: 130, },
@@ -28,19 +31,18 @@ const columns = [
     field: "edit",
     headerName: "",
     renderCell: (cellValues) => {
-      return <Button>Edit</Button>;
+      return <Button onClick= {(e)=> {props.onEdit(e, cellValues.row.id)} }>Edit</Button>;
     },
   },
   {
     field: "delete",
     headerName: "",
     renderCell: (cellValues) => {
-      return <Button>Delete</Button>;
+      return <Button onClick= {(e)=> {props.onDelete(e, cellValues.row.id)} }>Delete</Button>;
     },
   },
 ];
 
-const ContactList = (props) => {
   return (
     <DataGrid
       rows={props.rows}

@@ -1,15 +1,38 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Box, Button, Typography, TextField, Icon } from "@mui/material";
 import { FormControl } from "@mui/material";
 import { spacing } from "@mui/system";
 
 const Form = (props) => {
-
   const [eFname, seteFname] = useState("");
   const [eLname, seteLname] = useState("");
   const [ePhonenum, setePhonenum] = useState("");
   const [eEmail, seteEmail] = useState("");
   const [eAddress, seteAddress] = useState("");
+
+  const {selected} = props;
+
+  useEffect(() => {
+    
+    seteFname("");
+    seteLname("");
+    setePhonenum("");
+    seteEmail("");
+    seteAddress("");
+
+    if (props.add == false){
+
+
+      seteFname(selected.fName);
+      seteLname(selected.lName);
+      setePhonenum(selected.phonenum);
+      seteEmail(selected.email);
+      seteAddress(selected.address);
+
+    }
+
+
+  }, [selected]);
 
   const submitHandler = (event) => {
     event.preventDefault();
@@ -22,8 +45,6 @@ const Form = (props) => {
       address: eAddress,
     };
 
-    console.log(contactData)
-
     props.onEnterData(contactData);
     seteFname("");
     seteLname("");
@@ -31,7 +52,6 @@ const Form = (props) => {
     seteEmail("");
     seteAddress("");
   };
-
 
   const fNameChangeHandler = (event) => {
     seteFname(event.target.value);
@@ -65,7 +85,6 @@ const Form = (props) => {
           required={true}
           id="firstname"
           label="First name"
-          defaultValue={props.fname}
           value={eFname}
           onChange={fNameChangeHandler}
           type="text"
@@ -74,7 +93,6 @@ const Form = (props) => {
           required={true}
           id="lastname"
           label="Last name"
-          defaultValue={props.lname}
           value={eLname}
           onChange={lNameChangeHandler}
           type="text"
@@ -83,7 +101,6 @@ const Form = (props) => {
           required={true}
           id="phone"
           label="Phone number"
-          defaultValue={props.phonenum}
           value={ePhonenum}
           onChange={phoneChangeHandler}
           type="phoneno"
@@ -93,7 +110,6 @@ const Form = (props) => {
           id="email"
           label="Email"
           type="email"
-          defaultValue={props.email}
           value={eEmail}
           onChange={emailChangeHandler}
         />
@@ -101,7 +117,6 @@ const Form = (props) => {
           required={true}
           id="address"
           label="Address"
-          defaultValue={props.address}
           value={eAddress}
           onChange={addressChangeHandler}
         />

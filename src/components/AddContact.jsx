@@ -3,41 +3,33 @@ import { Box, Button, Typography, TextField } from "@mui/material";
 import Form from "./Form";
 
 const AddContact = (props) => {
-
-
   const enterDataHandler = (enteredData) => {
-
     const contactData = {
-    id: 10,...enteredData
+      id: props.size,
+      ...enteredData,
     };
-    props.onAdd(contactData)
-
-    console.log(contactData)
-
-  }
+    props.onAdd(contactData);
+  };
 
   const cancelHandler = (props) => {
 
+    //props.onCancel();
+    console.log("cancel")
 
-  }
+  };
 
   return (
     <Box
-    display="flex"
-    justifyContent="center"
-    alignItems="center"
-    flexDirection="column"
-    width="30%"
+      display="flex"
+      justifyContent="center"
+      alignItems="center"
+      flexDirection="column"
+      width="30%"
     >
-    <Typography>Add a new contact</Typography>
+      <Typography>Add a new contact</Typography>
 
-      <Form
-      onEnterData = {enterDataHandler}
-      onCancel = {cancelHandler}
-      ></Form>
-
+      <Form onEnterData={enterDataHandler} onCancel={cancelHandler} add={true} selected={props.selected}> mode={props.mode} </Form>
     </Box>
-
   );
 };
 

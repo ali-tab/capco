@@ -1,6 +1,7 @@
+//DeleteContact component
+
 import React, { useState } from "react";
 import { Box, Button, Typography, TextField } from "@mui/material";
-import Form from "./Form";
 
 const DeleteContact = (props) => {
   return (
@@ -11,7 +12,7 @@ const DeleteContact = (props) => {
       flexDirection="column"
       width="30%"
     >
-      <Typography variant="h4">
+      <Typography variant="h4" sx={{ p: 4 }}>
         Are you sure you want to delete this contact?
       </Typography>
       <Box
@@ -21,6 +22,7 @@ const DeleteContact = (props) => {
         flexDirection="row"
         width="30%"
       >
+        {/*delete contact data stored in the main page component*/}
         <Button
           sx={{ m: 1 }}
           variant="contained"
@@ -30,6 +32,7 @@ const DeleteContact = (props) => {
         >
           Yes
         </Button>
+        {/*get cancel from MainPage*/}
         <Button
           sx={{ m: 1 }}
           onClick={props.cancelDelete}

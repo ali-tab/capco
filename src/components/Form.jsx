@@ -1,42 +1,44 @@
+//form component shared by AddContact and EditContact
+
 import React, { useState, useEffect } from "react";
 import { Box, Button, Typography, TextField, Icon } from "@mui/material";
 import { FormControl } from "@mui/material";
 import { spacing } from "@mui/system";
 
 const Form = (props) => {
+  //set states for all data
   const [eFname, seteFname] = useState("");
   const [eLname, seteLname] = useState("");
   const [ePhonenum, setePhonenum] = useState("");
   const [eEmail, seteEmail] = useState("");
   const [eAddress, seteAddress] = useState("");
 
-  const {selected} = props;
+  const { selected } = props;
 
+  //clear the textfields
   useEffect(() => {
-    
     seteFname("");
     seteLname("");
     setePhonenum("");
     seteEmail("");
     seteAddress("");
 
-    if (props.add == false){
-
-
+    //if editing (not in add mode), force selected data to appear in textfields.
+    if (props.add == false) {
       seteFname(selected.fName);
       seteLname(selected.lName);
       setePhonenum(selected.phoneNum);
       seteEmail(selected.email);
       seteAddress(selected.address);
-
     }
-
-
   }, [selected]);
 
+  //on submission of form
   const submitHandler = (event) => {
+    //prevent default submit
     event.preventDefault();
 
+    //set the values from textfields
     const contactData = {
       fName: eFname,
       lName: eLname,
@@ -45,7 +47,10 @@ const Form = (props) => {
       address: eAddress,
     };
 
+    //enter data with a function depending on either if AddContact or EditContact is being used
     props.onEnterData(contactData);
+
+    //clear data
     seteFname("");
     seteLname("");
     setePhonenum("");
@@ -53,6 +58,7 @@ const Form = (props) => {
     seteAddress("");
   };
 
+  //textfield change handlers
   const fNameChangeHandler = (event) => {
     seteFname(event.target.value);
   };
@@ -81,6 +87,7 @@ const Form = (props) => {
       flexDirection="column"
       sx={{ m: 4 }}
     >
+      {/*submitHandler called here*/}
       <form onSubmit={submitHandler}>
         <TextField
           required={true}
@@ -106,8 +113,8 @@ const Form = (props) => {
           label="Phone number"
           value={ePhonenum}
           onChange={phoneChangeHandler}
-          type="phoneno"
           sx={{ m: 1 }}
+          inputProps={{ inputMode: "numeric", minLength: 10, maxLength: 10 }}
         />
         <TextField
           required={true}
@@ -136,7 +143,12 @@ const Form = (props) => {
         <Button sx={{ m: 1 }} type="submit" variant="contained" color="primary">
           Submit
         </Button>
-        <Button sx={{ m: 1 }} onClick={props.onCancel} variant="contained" color="primary">
+        <Button
+          sx={{ m: 1 }}
+          onClick={props.onCancel}
+          variant="contained"
+          color="primary"
+        >
           Cancel
         </Button>
       </form>

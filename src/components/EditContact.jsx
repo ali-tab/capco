@@ -9,11 +9,6 @@ const EditContact = (props) => {
     props.onSave(enteredData);
   };
 
-  const cancelHandler = (props) => {
-    props.onCancel();
-
-  };
-
   return (
     <Box
       display="flex"
@@ -22,9 +17,9 @@ const EditContact = (props) => {
       flexDirection="column"
       width="30%"
     >
-      <Typography>Edit contact</Typography>
+      <Typography variant="h4">Edit contact</Typography>
 
-      <Form onEnterData={enterDataHandler} add={false} selected={props.selected} ></Form>
+      <Form onEnterData={enterDataHandler} onCancel={props.cancelEdit} add={false} selected={props.selected} ></Form>
     </Box>
   );
 };

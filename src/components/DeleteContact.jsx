@@ -11,7 +11,9 @@ const DeleteContact = (props) => {
       flexDirection="column"
       width="30%"
     >
-      <Typography>Are you sure you want to delete this contact?</Typography>
+      <Typography variant="h4">
+        Are you sure you want to delete this contact?
+      </Typography>
       <Box
         display="flex"
         justifyContent="center"
@@ -19,10 +21,22 @@ const DeleteContact = (props) => {
         flexDirection="row"
         width="30%"
       >
-        <Button variant="contained" color="primary" onClick={props.onDelete}>
+        <Button
+          sx={{ m: 1 }}
+          variant="contained"
+          color="primary"
+          onClick={props.onDelete}
+          style={{ fontSize: "15px" }}
+        >
           Yes
         </Button>
-        <Button onClick={props.onCancel} variant="contained" color="primary">
+        <Button
+          sx={{ m: 1 }}
+          onClick={props.cancelDelete}
+          variant="contained"
+          color="primary"
+          style={{ fontSize: "15px" }}
+        >
           No
         </Button>
       </Box>

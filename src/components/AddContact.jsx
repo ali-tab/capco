@@ -11,13 +11,6 @@ const AddContact = (props) => {
     props.onAdd(contactData);
   };
 
-  const cancelHandler = (props) => {
-
-    //props.onCancel();
-    console.log("cancel")
-
-  };
-
   return (
     <Box
       display="flex"
@@ -26,9 +19,9 @@ const AddContact = (props) => {
       flexDirection="column"
       width="30%"
     >
-      <Typography>Add a new contact</Typography>
+      <Typography         variant="h4">Add a new contact</Typography>
 
-      <Form onEnterData={enterDataHandler} onCancel={cancelHandler} add={true} selected={props.selected}> mode={props.mode} </Form>
+      <Form onEnterData={enterDataHandler} onCancel={props.cancelAdd} add={true} selected={props.selected}> </Form>
     </Box>
   );
 };

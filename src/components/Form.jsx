@@ -25,7 +25,7 @@ const Form = (props) => {
 
       seteFname(selected.fName);
       seteLname(selected.lName);
-      setePhonenum(selected.phonenum);
+      setePhonenum(selected.phoneNum);
       seteEmail(selected.email);
       seteAddress(selected.address);
 
@@ -40,7 +40,7 @@ const Form = (props) => {
     const contactData = {
       fName: eFname,
       lName: eLname,
-      phonenum: ePhonenum,
+      phoneNum: ePhonenum,
       email: eEmail,
       address: eAddress,
     };
@@ -79,6 +79,7 @@ const Form = (props) => {
       justifyContent="center"
       alignItems="center"
       flexDirection="column"
+      sx={{ m: 4 }}
     >
       <form onSubmit={submitHandler}>
         <TextField
@@ -88,6 +89,7 @@ const Form = (props) => {
           value={eFname}
           onChange={fNameChangeHandler}
           type="text"
+          sx={{ m: 1 }}
         />
         <TextField
           required={true}
@@ -96,6 +98,7 @@ const Form = (props) => {
           value={eLname}
           onChange={lNameChangeHandler}
           type="text"
+          sx={{ m: 1 }}
         />
         <TextField
           required={true}
@@ -104,6 +107,7 @@ const Form = (props) => {
           value={ePhonenum}
           onChange={phoneChangeHandler}
           type="phoneno"
+          sx={{ m: 1 }}
         />
         <TextField
           required={true}
@@ -112,6 +116,7 @@ const Form = (props) => {
           type="email"
           value={eEmail}
           onChange={emailChangeHandler}
+          sx={{ m: 1 }}
         />
         <TextField
           required={true}
@@ -119,6 +124,7 @@ const Form = (props) => {
           label="Address"
           value={eAddress}
           onChange={addressChangeHandler}
+          sx={{ m: 1 }}
         />
         <Box
           display="flex"
@@ -127,10 +133,10 @@ const Form = (props) => {
           flexDirection="row"
           gap="2vh"
         ></Box>
-        <Button type="submit" variant="contained" color="primary">
+        <Button sx={{ m: 1 }} type="submit" variant="contained" color="primary">
           Submit
         </Button>
-        <Button onClick={props.onCancel} variant="contained" color="primary">
+        <Button sx={{ m: 1 }} onClick={props.onCancel} variant="contained" color="primary">
           Cancel
         </Button>
       </form>

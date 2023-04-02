@@ -6,7 +6,7 @@ import Form from "./Form";
 const AddContact = (props) => {
   const enterDataHandler = (enteredData) => {
     const contactData = {
-      id: props.size,
+      id: props.nextID,
       ...enteredData,
     };
     props.onAdd(contactData);

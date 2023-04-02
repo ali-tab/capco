@@ -13,7 +13,7 @@ const DeleteContact = (props) => {
       width="30%"
     >
       <Typography variant="h4" sx={{ p: 4 }}>
-        Are you sure you want to delete this contact?
+        Are you sure you want to delete {props.selected.fName}?
       </Typography>
       <Box
         display="flex"

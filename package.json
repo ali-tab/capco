@@ -2,6 +2,7 @@
   "name": "capco",
   "version": "0.1.0",
   "private": true,
+  "homepage": "http://{github-username}.github.io/{repo-name}",
   "dependencies": {
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",
@@ -20,8 +21,7 @@
     "react-phone-number": "^1.3.1",
     "react-phone-number-input": "^3.2.19",
     "react-scripts": "^5.0.1",
-    "web-vitals": "^2.1.4",
-    "homepage": "http://{github-username}.github.io/{repo-name}"
+    "web-vitals": "^2.1.4"
   },
   "scripts": {
     "start": "react-scripts start",

@@ -2,7 +2,7 @@
   "name": "capco",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://{github-username}.github.io/{repo-name}",
+  "homepage": "http://ali-tab.github.io/contactlist",
   "dependencies": {
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",

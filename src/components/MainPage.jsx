@@ -264,7 +264,7 @@ function MainPage() {
   return (
     <Box justifyContent="center" alignItems="center">
       <Typography
-        sx={{ p: 3, bgcolor: "info.main" }}
+        sx={{ p: 2, bgcolor: "info.main" }}
         variant="h3"
         fontFamily="DM Sans"
       >

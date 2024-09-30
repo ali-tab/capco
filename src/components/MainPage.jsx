@@ -264,14 +264,18 @@ function MainPage() {
   return (
     <Box justifyContent="center" alignItems="center">
       <Typography
-        sx={{ p: 5, bgcolor: "info.main" }}
+        sx={{ p: 3, bgcolor: "info.main" }}
         variant="h3"
         fontFamily="DM Sans"
       >
         Contacts
       </Typography>
       <Box
+        margin= "0"
+//        minWidth = "100%"
+//        height = "100vh"
         display="flex"
+//        flexDirection= "column"
         sx={{ p: 0, height: 830 }}
         justifyContent="center"
         alignItems="center"
